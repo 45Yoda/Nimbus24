@@ -12310,23 +12310,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Paquito30\\.nuget\\packages\\": {},
+    "C:\\Users\\Bandolero\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Paquito30\\Documents\\nimbus\\Nimbus24\\Nimbus24\\Nimbus24.csproj",
+      "projectUniqueName": "C:\\Users\\Bandolero\\Documents\\GitHub\\Nimbus24\\Nimbus24\\Nimbus24.csproj",
       "projectName": "Nimbus24",
-      "projectPath": "C:\\Users\\Paquito30\\Documents\\nimbus\\Nimbus24\\Nimbus24\\Nimbus24.csproj",
-      "packagesPath": "C:\\Users\\Paquito30\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Paquito30\\Documents\\nimbus\\Nimbus24\\Nimbus24\\obj\\",
+      "projectPath": "C:\\Users\\Bandolero\\Documents\\GitHub\\Nimbus24\\Nimbus24\\Nimbus24.csproj",
+      "packagesPath": "C:\\Users\\Bandolero\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bandolero\\Documents\\GitHub\\Nimbus24\\Nimbus24\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Paquito30\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Bandolero\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

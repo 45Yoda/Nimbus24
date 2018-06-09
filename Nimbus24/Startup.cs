@@ -34,7 +34,11 @@ namespace Nimbus24
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //Yoda
             var connection = @"Data Source=DESKTOP-1RUKO9N;Initial Catalog=Nimbus24;Integrated Security=True";
+            //Paquito
+            //var connection = @"Data Source=DESKTOP-1RUKO9N;Initial Catalog=Nimbus24;Integrated Security=True";
             services.AddDbContext<Nimbus24Context>(options => options.UseSqlServer(connection));
         }
 
