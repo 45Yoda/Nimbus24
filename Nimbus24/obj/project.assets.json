@@ -12316,11 +12316,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Paquito30\\source\\repos\\Nimbus24\\Nimbus24\\Nimbus24.csproj",
+      "projectUniqueName": "C:\\Users\\Paquito30\\Documents\\GitHub\\Nimbus24\\Nimbus24\\Nimbus24.csproj",
       "projectName": "Nimbus24",
-      "projectPath": "C:\\Users\\Paquito30\\source\\repos\\Nimbus24\\Nimbus24\\Nimbus24.csproj",
+      "projectPath": "C:\\Users\\Paquito30\\Documents\\GitHub\\Nimbus24\\Nimbus24\\Nimbus24.csproj",
       "packagesPath": "C:\\Users\\Paquito30\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Paquito30\\source\\repos\\Nimbus24\\Nimbus24\\obj\\",
+      "outputPath": "C:\\Users\\Paquito30\\Documents\\GitHub\\Nimbus24\\Nimbus24\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
