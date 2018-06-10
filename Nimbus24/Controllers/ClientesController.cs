@@ -20,10 +20,16 @@ namespace Nimbus24.Controllers
             return View();
         }
         
+        
         // GET: Clientes
         public ActionResult Index()
         {
             return View(db.Cliente.ToList());
+        }
+
+        public ActionResult Registar()
+        {
+            return View();
         }
 
         // GET: Clientes/Details/5
