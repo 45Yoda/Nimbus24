@@ -1,8 +1,7 @@
-﻿@model Nimbus24.Models.Cliente
+﻿@model Nimbus24.Cliente
 
 @{
-    ViewData["Title"] = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Delete";
 }
 
 <h2>Delete</h2>
@@ -13,34 +12,45 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Mail)
+            @Html.DisplayNameFor(model => model.mail)
         </dt>
+
         <dd>
-            @Html.DisplayFor(model => model.Mail)
+            @Html.DisplayFor(model => model.mail)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayNameFor(model => model.nome)
         </dt>
+
         <dd>
-            @Html.DisplayFor(model => model.Nome)
+            @Html.DisplayFor(model => model.nome)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.password)
         </dt>
+
         <dd>
-            @Html.DisplayFor(model => model.Password)
+            @Html.DisplayFor(model => model.password)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.Contacto)
+            @Html.DisplayNameFor(model => model.contacto)
         </dt>
+
         <dd>
-            @Html.DisplayFor(model => model.Contacto)
+            @Html.DisplayFor(model => model.contacto)
         </dd>
+
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
 </div>

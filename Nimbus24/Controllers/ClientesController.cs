@@ -1,152 +1,127 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Nimbus24.Models;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using Nimbus24;
 
 namespace Nimbus24.Controllers
 {
     public class ClientesController : Controller
     {
-        private readonly Nimbus24Context _context;
-
-        public ClientesController(Nimbus24Context context)
-        {
-            _context = context;
-        }
+        private Nimbus24Context db = new Nimbus24Context();
 
         // GET: Clientes
-        public async Task<IActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await _context.Cliente.ToListAsync());
+            return View(db.Cliente.ToList());
         }
 
         // GET: Clientes/Details/5
-        public async Task<IActionResult> Details(string id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
-                return NotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            var cliente = await _context.Cliente
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Cliente cliente = db.Cliente.Find(id);
             if (cliente == null)
             {
-                return NotFound();
+                return HttpNotFound();
             }
-
             return View(cliente);
         }
 
         // GET: Clientes/Create
-        public IActionResult Create()
+        public ActionResult Create()
         {
             return View();
         }
 
         // POST: Clientes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Mail,Nome,Password,Contacto")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "id,mail,nome,password,contacto")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cliente);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                db.Cliente.Add(cliente);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
+
             return View(cliente);
         }
 
         // GET: Clientes/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
-                return NotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            var cliente = await _context.Cliente.FindAsync(id);
+            Cliente cliente = db.Cliente.Find(id);
             if (cliente == null)
             {
-                return NotFound();
+                return HttpNotFound();
             }
             return View(cliente);
         }
 
         // POST: Clientes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Mail,Nome,Password,Contacto")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "id,mail,nome,password,contacto")] Cliente cliente)
         {
-            if (id != cliente.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(cliente);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ClienteExists(cliente.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                db.Entry(cliente).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             return View(cliente);
         }
 
         // GET: Clientes/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
-                return NotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            var cliente = await _context.Cliente
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Cliente cliente = db.Cliente.Find(id);
             if (cliente == null)
             {
-                return NotFound();
+                return HttpNotFound();
             }
-
             return View(cliente);
         }
 
         // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            var cliente = await _context.Cliente.FindAsync(id);
-            _context.Cliente.Remove(cliente);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            Cliente cliente = db.Cliente.Find(id);
+            db.Cliente.Remove(cliente);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        private bool ClienteExists(string id)
+        protected override void Dispose(bool disposing)
         {
-            return _context.Cliente.Any(e => e.Id == id);
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
