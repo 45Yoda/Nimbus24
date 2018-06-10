@@ -14,6 +14,12 @@ namespace Nimbus24.Controllers
     {
         private Nimbus24Context db = new Nimbus24Context();
 
+        public ActionResult Login()
+        {
+            ViewData["Message"] = "Faça o Login:";
+            return View();
+        }
+        
         // GET: Clientes
         public ActionResult Index()
         {
