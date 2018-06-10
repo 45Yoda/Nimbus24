@@ -17,17 +17,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nimbus24", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+               
                 
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-
+                    <li> @Html.ActionLink("Nimbus24", "Index", "Home")</li>
                     <li>
                         <img src="~/Images/d.png" alt="Avatar" class="avatar" style="width:8%;">
                     </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
                     <li>@Html.ActionLink("Login", "Login", "Clientes")</li>
                 </ul>
             </div>

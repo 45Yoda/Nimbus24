@@ -8,8 +8,11 @@
 <h3>@ViewData["Message"]</h3>
 
 <body style="background-color: beige; font-family: Verdana, Arial;">
-
-    <div class="container" align="center">
+    <div class="tab" align="center">
+        <button class="tablinks" onclick="openTab(event, 'Login')" id="defaultOpen">Login</button>
+        <button class="tablinks" onclick="openTab(event, 'Registar')">Registar</button>
+    </div>
+    <div id="Login" class="tabcontent" align="center">
         <form action="" method="post" align="middle">
             <img src="~/Images/d.png" alt="Avatar" style="width:30%;"><br />
             <label for="uname"><b>Username</b></label>
@@ -21,4 +24,27 @@
             <button type="submit">Login</button>
         </form>
     </div>
+    <div id="Registar" class="tabcontent" align="center">
+        <img src="~/Images/d.png" alt="Avatar" style="width:30%;"><br />
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required align="middle"> <br />
+    </div>
+    <script>
+        function openTab(evt, name) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(name).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
 </body>
