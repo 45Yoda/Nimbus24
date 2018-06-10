@@ -13,5 +13,10 @@ namespace Nimbus24.Controllers
         {
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }

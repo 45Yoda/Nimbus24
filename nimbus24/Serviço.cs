@@ -14,8 +14,7 @@ namespace Nimbus24
             Avaliação = new HashSet<Avaliação>();
         }
 
-        [StringLength(50)]
-        public string id { get; set; }
+        public int id { get; set; }
 
         public decimal? preço { get; set; }
 
@@ -23,11 +22,9 @@ namespace Nimbus24
 
         public int? estado { get; set; }
 
-        [StringLength(50)]
-        public string idCliente { get; set; }
+        public int? idCliente { get; set; }
 
-        [StringLength(50)]
-        public string idPrestador { get; set; }
+        public int? idPrestador { get; set; }
 
         [StringLength(50)]
         public string descrição { get; set; }

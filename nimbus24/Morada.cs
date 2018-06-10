@@ -15,7 +15,6 @@ namespace Nimbus24
             Serviço = new HashSet<Serviço>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [StringLength(50)]

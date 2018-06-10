@@ -9,15 +9,13 @@ namespace Nimbus24
     [Table("TipoServico")]
     public partial class TipoServico
     {
-        [StringLength(50)]
-        public string id { get; set; }
+        public int id { get; set; }
 
         public int? tipo { get; set; }
 
         public decimal? preco { get; set; }
 
-        [StringLength(50)]
-        public string id_Prestador { get; set; }
+        public int? id_Prestador { get; set; }
 
         public int? negociavel { get; set; }
 

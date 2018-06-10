@@ -16,8 +16,7 @@ namespace Nimbus24
             Prestador = new HashSet<Prestador>();
         }
 
-        [StringLength(50)]
-        public string id { get; set; }
+        public int id { get; set; }
 
         [StringLength(50)]
         public string mail { get; set; }

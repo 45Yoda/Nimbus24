@@ -23,15 +23,7 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Avaliação>()
-                .Property(e => e.id)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Avaliação>()
                 .Property(e => e.obs)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Avaliação>()
-                .Property(e => e.Servico_id)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Cidade>()
@@ -47,10 +39,6 @@
                 .HasMany(e => e.Prestador)
                 .WithOptional(e => e.Cidade)
                 .HasForeignKey(e => e.Cidade_cidade);
-
-            modelBuilder.Entity<Cliente>()
-                .Property(e => e.id)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Cliente>()
                 .Property(e => e.mail)
@@ -96,10 +84,6 @@
                 .HasForeignKey(e => e.morada_id);
 
             modelBuilder.Entity<Prestador>()
-                .Property(e => e.Id)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Prestador>()
                 .Property(e => e.nome)
                 .IsUnicode(false);
 
@@ -130,20 +114,8 @@
                 .HasForeignKey(e => e.id_Prestador);
 
             modelBuilder.Entity<Serviço>()
-                .Property(e => e.id)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Serviço>()
                 .Property(e => e.preço)
                 .HasPrecision(6, 2);
-
-            modelBuilder.Entity<Serviço>()
-                .Property(e => e.idCliente)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Serviço>()
-                .Property(e => e.idPrestador)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Serviço>()
                 .Property(e => e.descrição)
@@ -155,16 +127,8 @@
                 .HasForeignKey(e => e.Servico_id);
 
             modelBuilder.Entity<TipoServico>()
-                .Property(e => e.id)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TipoServico>()
                 .Property(e => e.preco)
                 .HasPrecision(6, 2);
-
-            modelBuilder.Entity<TipoServico>()
-                .Property(e => e.id_Prestador)
-                .IsUnicode(false);
         }
     }
 }

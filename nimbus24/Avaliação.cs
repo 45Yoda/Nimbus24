@@ -8,16 +8,14 @@ namespace Nimbus24
 
     public partial class Avaliação
     {
-        [StringLength(50)]
-        public string id { get; set; }
+        public int id { get; set; }
 
         public int? avaliacao { get; set; }
 
         [StringLength(50)]
         public string obs { get; set; }
 
-        [StringLength(50)]
-        public string Servico_id { get; set; }
+        public int? Servico_id { get; set; }
 
         public virtual Serviço Serviço { get; set; }
     }

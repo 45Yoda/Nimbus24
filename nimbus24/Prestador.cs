@@ -17,8 +17,7 @@ namespace Nimbus24
             Cliente = new HashSet<Cliente>();
         }
 
-        [StringLength(50)]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(50)]
         public string nome { get; set; }
