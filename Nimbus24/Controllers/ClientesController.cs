@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Nimbus24;
 
 namespace Nimbus24.Controllers
@@ -19,8 +20,42 @@ namespace Nimbus24.Controllers
             ViewData["Message"] = "Faça o Login:";
             return View();
         }
-        
-        
+
+        [HttpPost]
+        public ActionResult Login(string mail, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                var clientes = (from m in db.Cliente
+                                where m.mail == mail && m.password == password
+                                select m);
+                if (clientes.ToList<Cliente>().Count > 0)
+                {
+                    Cliente cliente = clientes.ToList<Cliente>().ElementAt<Cliente>(0);
+                    FormsAuthentication.SetAuthCookie(cliente.mail, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Mail and Password combination is incorrect!");
+                }
+            }
+            return View();
+
+        }
+
+        public ActionResult LoginScucess()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Clientes");
+        }
+
+
         // GET: Clientes
         public ActionResult Index()
         {
@@ -33,9 +68,9 @@ namespace Nimbus24.Controllers
         }
 
         // GET: Clientes/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            if (id == -1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -71,9 +106,9 @@ namespace Nimbus24.Controllers
         }
 
         // GET: Clientes/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            if (id == -1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -102,9 +137,9 @@ namespace Nimbus24.Controllers
         }
 
         // GET: Clientes/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            if (id == -1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -119,7 +154,7 @@ namespace Nimbus24.Controllers
         // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Cliente cliente = db.Cliente.Find(id);
             db.Cliente.Remove(cliente);
