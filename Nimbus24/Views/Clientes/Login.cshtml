@@ -1,21 +1,24 @@
 ﻿@{
 
     ViewData["Title"] = "Bem Vindo!";
-    
-    }
 
-    <h2>@ViewData["Title"]</h2>
-    <h3>@ViewData["Message"]</h3>
-    
-    <div class="container">
-    
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>    
-        
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>    <button type="submit">Login</button>
-        
-        </div>
+}
 
-        <p>Use this area to provide additional information.</p>
-    
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<body style="background-color: beige; font-family: Verdana, Arial;">
+
+    <div class="container" align="center">
+        <form action="" method="post" align="middle">
+            <img src="~/Images/d.png" alt="Avatar" style="width:30%;"><br />
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required align="middle"> <br />
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required><br>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
