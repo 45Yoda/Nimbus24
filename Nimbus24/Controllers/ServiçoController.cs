@@ -14,11 +14,37 @@ namespace Nimbus24.Controllers
     {
         private Nimbus24Context db = new Nimbus24Context();
 
+        public ActionResult Contacts()
+        {
+            return View();
+        }
         // GET: Serviço
         public ActionResult Index()
         {
-            var serviço = db.Serviço.Include(s => s.Cliente).Include(s => s.Morada).Include(s => s.Prestador);
-            return View(serviço.ToList());
+            
+            var id = (from p in db.Prestador
+                      where p.mail == User.Identity.Name
+                      select p.Id);
+
+            if(id.ToList<int>().Count > 0) { 
+                     var serviço = (from s in db.Serviço
+                                    where s.idPrestador == id.First()
+                                    select s);
+
+                    return View(serviço.ToList());
+                }
+              else
+                {
+                 id = (from c in db.Cliente
+                          where c.mail == User.Identity.Name
+                          select c.id);
+
+               var serv = (from s in db.Serviço
+                                   where s.idCliente == id.FirstOrDefault()
+                                   select s);
+
+                return View(serv.ToList());
+            }
         }
 
         // GET: Serviço/Details/5
