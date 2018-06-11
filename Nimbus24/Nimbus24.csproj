@@ -107,8 +107,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\3.jpg" />
     <Content Include="Images\avatar.png" />
+    <Content Include="Images\bit_bear.png" />
     <Content Include="Images\d.png" />
+    <Content Include="Images\logo.png" />
     <Content Include="Images\reeeeee.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
