@@ -176,6 +176,7 @@
     <Content Include="Views\Serviço\Details.cshtml" />
     <Content Include="Views\Serviço\Edit.cshtml" />
     <Content Include="Views\Serviço\Index.cshtml" />
+    <Content Include="Views\Prestadors\Registar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
