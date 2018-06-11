@@ -19,16 +19,18 @@ namespace Nimbus24.Controllers
         public ActionResult Historico()
         {
 
-            var id = (from p in db.Prestador
-                      where p.mail == User.Identity.Name
-                      select p.Id);
 
-           var serviço = (from s in db.Serviço
-                               where s.idPrestador == id.First()
-                               select s);
 
-           return View(serviço.ToList());
-          
+            var serviços = (from p in db.Prestador
+                            join s in db.Serviço on
+                             p.Id equals s.idPrestador
+                            join c in db.Cliente on s.idCliente equals c.id
+                            where p.mail == User.Identity.Name
+                            select s);
+
+
+            return View(serviços.ToList());
+
         }
 
         public ActionResult Login()
@@ -78,6 +80,7 @@ namespace Nimbus24.Controllers
             return View();
         }
 
+
         // POST: Prestadors/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -96,6 +99,43 @@ namespace Nimbus24.Controllers
             ViewBag.Cidade_cidade = new SelectList(db.Cidade, "Cidade1", "Cidade1", prestador.Cidade_cidade);
             return View(prestador);
         }
+
+        public ActionResult Perfil(int id)
+        {
+            if (id == -1)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Prestador prestador = db.Prestador.Find(id);
+            if (prestador == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Cidade_cidade = new SelectList(db.Cidade, "Cidade1", "Cidade1", prestador.Cidade_cidade);
+            return View(prestador);
+        }
+
+        // POST: Prestadors/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Perfil([Bind(Include = "Id,nome,mail,rating,password,contacto,Cidade_cidade")] Prestador prestador)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(prestador).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Cidade_cidade = new SelectList(db.Cidade, "Cidade1", "Cidade1", prestador.Cidade_cidade);
+            return View(prestador);
+        }
+
+
+
+
+
 
         // GET: Prestadors
         public ActionResult Index()

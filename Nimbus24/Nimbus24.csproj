@@ -175,6 +175,7 @@
     <Content Include="Views\Prestadors\Registar.cshtml" />
     <Content Include="Views\Shared\PrestadoresLayout.cshtml" />
     <Content Include="Views\Prestadors\Historico.cshtml" />
+    <Content Include="Views\Prestadors\Perfil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
