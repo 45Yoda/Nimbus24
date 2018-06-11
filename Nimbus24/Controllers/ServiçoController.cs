@@ -14,6 +14,30 @@ namespace Nimbus24.Controllers
     {
         private Nimbus24Context db = new Nimbus24Context();
 
+        public ActionResult RegistarServico()
+        {
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "mail");
+            ViewBag.morada_id = new SelectList(db.Morada, "id", "rua");
+            ViewBag.idPrestador = new SelectList(db.Prestador, "Id", "nome");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistarServico([Bind(Include = "id,preço,data,estado,idCliente,idPrestador,descrição,morada_id" )]Serviço serviço)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Serviço.Add(serviço);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "mail", serviço.idCliente);
+            ViewBag.morada_id = new SelectList(db.Morada, "id", "rua", serviço.morada_id);
+            ViewBag.idPrestador = new SelectList(db.Prestador, "Id", "nome", serviço.idPrestador);
+            return View();
+        }
         public ActionResult AddServico()
         {
             return View();
@@ -25,30 +49,8 @@ namespace Nimbus24.Controllers
         // GET: Serviço
         public ActionResult Index()
         {
+            return View();
             
-            var id = (from p in db.Prestador
-                      where p.mail == User.Identity.Name
-                      select p.Id);
-
-            if(id.ToList<int>().Count > 0) { 
-                     var serviço = (from s in db.Serviço
-                                    where s.idPrestador == id.First()
-                                    select s);
-
-                    return View(serviço.ToList());
-                }
-              else
-                {
-                 id = (from c in db.Cliente
-                          where c.mail == User.Identity.Name
-                          select c.id);
-
-               var serv = (from s in db.Serviço
-                                   where s.idCliente == id.FirstOrDefault()
-                                   select s);
-
-                return View(serv.ToList());
-            }
         }
 
         // GET: Serviço/Details/5
