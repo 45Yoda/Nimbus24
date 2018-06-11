@@ -18,6 +18,31 @@ namespace Nimbus24.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddServico([Bind(Include = "id,tipo,preco,id_Prestador,negociavel")] TipoServico tipoServico)
+        {
+            if (ModelState.IsValid)
+            {
+                tipoServico.negociavel = 0;
+
+                var id = (from p in db.Prestador
+                          where p.mail == User.Identity.Name
+                          select p.Id);
+
+                tipoServico.id_Prestador = id.ToList().ElementAt(0);
+
+                db.TipoServico.Add(tipoServico);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.id_Prestador = new SelectList(db.Prestador, "Id", "nome", tipoServico.id_Prestador);
+            return View(tipoServico);
+        }
+
+
         // GET: TipoServicos
         public ActionResult Index()
         {

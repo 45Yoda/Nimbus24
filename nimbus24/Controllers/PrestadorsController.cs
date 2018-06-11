@@ -115,6 +115,8 @@ namespace Nimbus24.Controllers
             return View(prestador);
         }
 
+       
+
         // POST: Prestadors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -127,6 +129,22 @@ namespace Nimbus24.Controllers
                 db.Entry(prestador).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            ViewBag.Cidade_cidade = new SelectList(db.Cidade, "Cidade1", "Cidade1", prestador.Cidade_cidade);
+            return View(prestador);
+        }
+
+        public ActionResult Vista(int id)
+        {
+            var prest = (from p in db.Prestador
+                         where p.Id == id
+                         select p);
+
+            Prestador prestador = db.Prestador.Find(prest);
+
+            if (prestador == null)
+            {
+                return HttpNotFound();
             }
             ViewBag.Cidade_cidade = new SelectList(db.Cidade, "Cidade1", "Cidade1", prestador.Cidade_cidade);
             return View(prestador);

@@ -1,16 +1,11 @@
 ﻿@model Nimbus24.TipoServico
 
 @{
-    Layout = null;
+    ViewBag.Title = "Delete";
 }
 
-<!DOCTYPE html>
+<title>Delete</title>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
 <body>
     <h3>Are you sure you want to delete this?</h3>
     <div>
@@ -56,9 +51,7 @@
     
             <div class="form-actions no-color">
                 <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
             </div>
         }
     </div>
 </body>
-</html>

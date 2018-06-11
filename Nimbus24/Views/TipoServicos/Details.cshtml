@@ -1,16 +1,12 @@
 ﻿@model Nimbus24.TipoServico
 
 @{
-    Layout = null;
+    ViewBag.Title = "Delete";
 }
 
-<!DOCTYPE html>
+<title>Details</title>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
+ <title>Details</title>
 <body>
     <div>
         <h4>TipoServico</h4>
@@ -19,40 +15,39 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Prestador.nome)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Prestador.nome)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.tipo)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.tipo)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.preco)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.preco)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.negociavel)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.negociavel)
             </dd>
-    
+
         </dl>
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-        @Html.ActionLink("Back to List", "Index")
     </p>
 </body>
-</html>
+

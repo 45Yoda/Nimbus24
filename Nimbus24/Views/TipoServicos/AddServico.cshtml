@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
+    <title>Serviço</title>
 </head>
     @using (Html.BeginForm()) 
     {
@@ -21,7 +21,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div>
-            <img src="~/Images/s.png" alt="Avatar" style="width:30%;margin-left: 150px;"><br />
+            <img src="~/Images/tipo.png" alt="Avatar" style="width:30%;margin-left: 150px;"><br />
         </div>
 
         <div class="form-group" align="left">
@@ -41,15 +41,15 @@
         </div>
 
         <div class="form-group" align="left" style="margin-left: 125px" >
-            <form action="" ;>
+            <div class=" col-md-10">
                 <b>Negociavel</b>
-                <input type="checkbox" name="neg" value="Negociavel"><br>
-            </form>
+                <input type="checkbox" name="neg" class="checkbox" value="Negociavel"><br>
+            </div>
         </div>
 
         <div class="form-group" align="left">
             <div class="col-md-offset-2 col-md-10" align="left">
-                <input type="submit" value="Adicionar" class="btn btn-default" style="middle" />
+                <input type="submit" value="Adicionar" class="btn btn-default" style="middle"/>
             </div>
         </div>
     </div>
