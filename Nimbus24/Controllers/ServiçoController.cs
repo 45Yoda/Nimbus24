@@ -28,10 +28,21 @@ namespace Nimbus24.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                var id = (from c in db.Cliente
+                          where c.mail == User.Identity.Name
+                          select c.id);
+
+                serviço.estado = 0;
+
+                serviço.idCliente = id.ToList().ElementAt(0);
+
+
                 db.Serviço.Add(serviço);
                 db.SaveChanges();
                 return RedirectToAction("Index","Home");
             }
+
 
             ViewBag.idCliente = new SelectList(db.Cliente, "id", "mail", serviço.idCliente);
             ViewBag.morada_id = new SelectList(db.Morada, "id", "rua", serviço.morada_id);

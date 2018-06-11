@@ -101,11 +101,16 @@ namespace Nimbus24.Controllers
 
         public ActionResult Perfil()
         {
+            Prestador prestador = null;
+
             var id = (from p in db.Prestador
                              where p.mail == User.Identity.Name
                              select p.Id);
 
-            Prestador prestador = db.Prestador.Find(id.ToList().ElementAt(0));
+            if(id != null) {
+                prestador = db.Prestador.Find(id.ToList().ElementAt(0));
+            }
+
 
             if (prestador == null)
             {

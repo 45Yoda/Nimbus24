@@ -18,8 +18,6 @@ namespace Nimbus24.Controllers
         public ActionResult Historico()
         {
 
-
-
             var serviços = (from c in db.Cliente
                             join s in db.Serviço on
                              c.id equals s.idCliente
