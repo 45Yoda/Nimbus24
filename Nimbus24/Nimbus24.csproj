@@ -186,6 +186,7 @@
     <Content Include="Views\TipoServicos\Index.cshtml" />
     <Content Include="Views\Serviço\RegistarServico.cshtml" />
     <Content Include="Views\Prestadors\Proposta.cshtml" />
+    <Content Include="Views\Serviço\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -30,7 +30,7 @@ namespace Nimbus24.Controllers
             {
                 db.Serviço.Add(serviço);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             ViewBag.idCliente = new SelectList(db.Cliente, "id", "mail", serviço.idCliente);
