@@ -18,5 +18,11 @@ namespace Nimbus24.Controllers
         {
             return View();
         }
+
+
+        public ActionResult Contacts()
+        {
+            return View();
+        }
     }
 }

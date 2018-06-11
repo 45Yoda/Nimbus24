@@ -111,6 +111,7 @@
     <Content Include="Images\2.jpg" />
     <Content Include="Images\3.jpg" />
     <Content Include="Images\avatar.png" />
+    <Content Include="Images\bit.png" />
     <Content Include="Images\bit_bear.png" />
     <Content Include="Images\d.png" />
     <Content Include="Images\logo.png" />
@@ -166,6 +167,7 @@
     <Content Include="Views\Shared\ClientesLayout.cshtml" />
     <Content Include="Views\Clientes\Registar.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contacts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
