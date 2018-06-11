@@ -16,6 +16,21 @@ namespace Nimbus24.Controllers
         private Nimbus24Context db = new Nimbus24Context();
 
 
+        public ActionResult Historico()
+        {
+
+            var id = (from p in db.Prestador
+                      where p.mail == User.Identity.Name
+                      select p.Id);
+
+           var serviço = (from s in db.Serviço
+                               where s.idPrestador == id.First()
+                               select s);
+
+           return View(serviço.ToList());
+          
+        }
+
         public ActionResult Login()
         {
             ViewData["Message"] = "Faça o Login:";

@@ -171,12 +171,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\Prestadors\Login.cshtml" />
-    <Content Include="Views\Serviço\Create.cshtml" />
-    <Content Include="Views\Serviço\Delete.cshtml" />
-    <Content Include="Views\Serviço\Details.cshtml" />
-    <Content Include="Views\Serviço\Edit.cshtml" />
-    <Content Include="Views\Serviço\Index.cshtml" />
+    <Content Include="Views\Clientes\Historico.cshtml" />
     <Content Include="Views\Prestadors\Registar.cshtml" />
+    <Content Include="Views\Shared\PrestadoresLayout.cshtml" />
+    <Content Include="Views\Prestadors\Historico.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

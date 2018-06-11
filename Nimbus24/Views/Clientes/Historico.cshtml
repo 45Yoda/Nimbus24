@@ -1,8 +1,7 @@
 ﻿@model IEnumerable<Nimbus24.Serviço>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Histórico";
 }
 <body style="background-color: beige; font-family: Verdana, Arial;">
 
@@ -14,25 +13,25 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Cliente.mail)
+                <label> Cliente</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Morada.rua)
+                <label> Morada</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Prestador.nome)
+                <label> Prestador</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.preço)
+                <label> Preço </label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.data)
+                <label> Data</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.estado)
+                <label> Estado*</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.descrição)
+                <label> Descrição</label>
             </th>
             <th></th>
         </tr>
@@ -61,8 +60,17 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.descrição)
                 </td>
+                <td>
+                </td>
             </tr>
+                    <div id="stars" class="starrr"></div>
         }
 
     </table>
+            <p>
+                Estado de Serviço :<br />
+                0 - Em negociação. <br />
+                1 - Proposta Aceite <br />
+                2 - Realizado 
+            </p>
     </body>
