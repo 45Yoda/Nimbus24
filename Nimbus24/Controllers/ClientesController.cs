@@ -26,7 +26,7 @@ namespace Nimbus24.Controllers
                             join p in db.Prestador on s.idPrestador equals p.Id
                             where c.mail == User.Identity.Name
                             select s);
-
+         
  
          return View(serviços.ToList());
         
