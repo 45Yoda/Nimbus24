@@ -67,6 +67,20 @@ namespace Nimbus24.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Registar([Bind(Include = "id,mail,nome,password,contacto")] Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Cliente.Add(cliente);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(cliente);
+        }
+
         // GET: Clientes/Details/5
         public ActionResult Details(int id)
         {

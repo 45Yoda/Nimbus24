@@ -143,6 +143,7 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrestadorsController.cs" />
+    <Compile Include="Controllers\ServiçoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,6 +171,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\Prestadors\Login.cshtml" />
+    <Content Include="Views\Serviço\Create.cshtml" />
+    <Content Include="Views\Serviço\Delete.cshtml" />
+    <Content Include="Views\Serviço\Details.cshtml" />
+    <Content Include="Views\Serviço\Edit.cshtml" />
+    <Content Include="Views\Serviço\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
