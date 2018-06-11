@@ -33,7 +33,7 @@ namespace Nimbus24.Controllers
                 {
                     Cliente cliente = clientes.ToList<Cliente>().ElementAt<Cliente>(0);
                     FormsAuthentication.SetAuthCookie(cliente.mail, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Clientes");
                 }
                 else
                 {
