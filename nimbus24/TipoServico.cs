@@ -11,7 +11,7 @@ namespace Nimbus24
     {
         public int id { get; set; }
 
-        public int? tipo { get; set; }
+        public string tipo { get; set; }
 
         public decimal? preco { get; set; }
 
