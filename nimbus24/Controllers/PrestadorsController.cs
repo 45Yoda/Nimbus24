@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Nimbus24;
 
 namespace Nimbus24.Controllers
@@ -13,6 +14,46 @@ namespace Nimbus24.Controllers
     public class PrestadorsController : Controller
     {
         private Nimbus24Context db = new Nimbus24Context();
+
+        public ActionResult Login()
+        {
+            ViewData["Message"] = "Faça o Login:";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string mail, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                var prestadores = (from m in db.Prestador
+                                where m.mail == mail && m.password == password
+                                select m);
+                if (prestadores.ToList<Prestador>().Count > 0)
+                {
+                    Prestador prestador = prestadores.ToList<Prestador>().ElementAt<Prestador>(0);
+                    FormsAuthentication.SetAuthCookie(prestador.mail, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Mail and Password combination is incorrect!");
+                }
+            }
+            return View();
+
+        }
+
+        public ActionResult LoginScucess()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Prestadors");
+        }
 
         // GET: Prestadors
         public ActionResult Index()

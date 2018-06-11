@@ -115,6 +115,7 @@
     <Content Include="Images\bit_bear.png" />
     <Content Include="Images\d.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\p.png" />
     <Content Include="Images\reeeeee.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -168,6 +169,7 @@
     <Content Include="Views\Clientes\Registar.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
+    <Content Include="Views\Prestadors\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

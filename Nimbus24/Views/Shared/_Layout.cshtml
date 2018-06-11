@@ -46,7 +46,7 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Prestador<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Login</a></li>
+                            <li>@Html.ActionLink("Login", "Login", "Prestadors")</li>
                             <li><a href="#">Registar</a></li>
 
                         </ul>
@@ -64,7 +64,8 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Made by <b>bit_Bear</b>             <img src="~/Images/d.png" style="width:8%" align="right" />
+            <p>&copy; @DateTime.Now.Year - Made by <b>bit_Bear</b>           
+            <img src="~/Images/bit.png" style="width:3%" align="right" />
 </p>
         </footer>
     </div>
