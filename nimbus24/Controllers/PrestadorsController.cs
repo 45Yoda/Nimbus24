@@ -15,6 +15,7 @@ namespace Nimbus24.Controllers
     {
         private Nimbus24Context db = new Nimbus24Context();
 
+
         public ActionResult Login()
         {
             ViewData["Message"] = "Faça o Login:";
@@ -44,7 +45,7 @@ namespace Nimbus24.Controllers
 
         }
 
-        public ActionResult LoginScucess()
+        public ActionResult LoginSuccess()
         {
             return RedirectToAction("Index", "Home");
         }
@@ -55,6 +56,32 @@ namespace Nimbus24.Controllers
             return RedirectToAction("Login", "Prestadors");
         }
 
+        // GET: Prestadors/Create
+        public ActionResult Registar()
+        {
+            ViewBag.Cidade_cidade = new SelectList(db.Cidade, "Cidade1", "Cidade1");
+            return View();
+        }
+
+        // POST: Prestadors/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Registar([Bind(Include = "Id,nome,mail,rating,password,contacto,Cidade_cidade")] Prestador prestador)
+        {
+            if (ModelState.IsValid)
+            {
+                prestador.rating = 0;
+                db.Prestador.Add(prestador);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.Cidade_cidade = new SelectList(db.Cidade, "Cidade1", "Cidade1", prestador.Cidade_cidade);
+            return View(prestador);
+        }
+
         // GET: Prestadors
         public ActionResult Index()
         {
@@ -63,9 +90,9 @@ namespace Nimbus24.Controllers
         }
 
         // GET: Prestadors/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            if (id == -1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -103,9 +130,9 @@ namespace Nimbus24.Controllers
         }
 
         // GET: Prestadors/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            if (id == -1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -136,9 +163,9 @@ namespace Nimbus24.Controllers
         }
 
         // GET: Prestadors/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            if (id == -1)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -153,7 +180,7 @@ namespace Nimbus24.Controllers
         // POST: Prestadors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Prestador prestador = db.Prestador.Find(id);
             db.Prestador.Remove(prestador);
