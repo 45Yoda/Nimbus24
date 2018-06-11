@@ -16,10 +16,9 @@ namespace Nimbus24.Controllers
         private Nimbus24Context db = new Nimbus24Context();
 
 
+        
         public ActionResult Historico()
-        {
-
-
+        { 
 
             var serviços = (from p in db.Prestador
                             join s in db.Serviço on
@@ -100,13 +99,14 @@ namespace Nimbus24.Controllers
             return View(prestador);
         }
 
-        public ActionResult Perfil(int id)
+        public ActionResult Perfil()
         {
-            if (id == -1)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Prestador prestador = db.Prestador.Find(id);
+            var id = (from p in db.Prestador
+                             where p.mail == User.Identity.Name
+                             select p.Id);
+
+            Prestador prestador = db.Prestador.Find(id.ToList().ElementAt(0));
+
             if (prestador == null)
             {
                 return HttpNotFound();

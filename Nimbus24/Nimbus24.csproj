@@ -114,9 +114,11 @@
     <Content Include="Images\bit.png" />
     <Content Include="Images\bit_bear.png" />
     <Content Include="Images\d.png" />
+    <Content Include="Images\log.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\p.png" />
     <Content Include="Images\reeeeee.png" />
+    <Content Include="Images\s.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -144,6 +146,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrestadorsController.cs" />
     <Compile Include="Controllers\ServiçoController.cs" />
+    <Compile Include="Controllers\TipoServicosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +179,11 @@
     <Content Include="Views\Shared\PrestadoresLayout.cshtml" />
     <Content Include="Views\Prestadors\Historico.cshtml" />
     <Content Include="Views\Prestadors\Perfil.cshtml" />
+    <Content Include="Views\TipoServicos\AddServico.cshtml" />
+    <Content Include="Views\TipoServicos\Delete.cshtml" />
+    <Content Include="Views\TipoServicos\Details.cshtml" />
+    <Content Include="Views\TipoServicos\Edit.cshtml" />
+    <Content Include="Views\TipoServicos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

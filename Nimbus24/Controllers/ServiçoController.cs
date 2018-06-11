@@ -14,6 +14,10 @@ namespace Nimbus24.Controllers
     {
         private Nimbus24Context db = new Nimbus24Context();
 
+        public ActionResult AddServico()
+        {
+            return View();
+        }
         public ActionResult Contacts()
         {
             return View();
