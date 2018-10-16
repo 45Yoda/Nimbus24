@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "title": "cea",
+    "owner": "asdas",
+    "description": "dsad"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "title": "cena",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "id": 0
+      }
+    ],
+    "reviewer": "das"
+  }
+}
